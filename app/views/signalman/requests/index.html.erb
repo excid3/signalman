@@ -1,9 +1,19 @@
 <h1>Requests</h1>
 
-<% @events.each do |event| %>
-  <%= tag.div id: dom_id(event) do %>
-    <%= link_to request_path(event) do %>
-      <%= event.name %>
+<div class="table w-full">
+  <div class="table-row-group">
+  <% @events.each do |event| %>
+    <%= link_to request_path(event), class: "table-row", id: dom_id(event) do %>
+      <%= tag.div event.payload["method"], class: "table-cell" %>
+      <%= tag.div event.payload["path"], class: "table-cell" %>
+      <%= tag.div event.payload["status"], class: "table-cell" %>
+      <%= tag.div class: "table-cell" do %>
+        <%= event.payload["duration"] %>
+      <% end %>
+      <%= tag.div class: "table-cell" do %>
+        <%= time_ago_in_words event.started_at %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+  </div>
+</div>

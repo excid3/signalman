@@ -19,10 +19,27 @@ module Signalman
 
     def create_event(payload = nil)
       payload ||= event.payload
+
       Event.create(
         name: event.name,
-        payload: payload.merge(duration: event.duration)
+        started_at: started_at,
+        finished_at: finished_at,
+        payload: payload.merge(duration: event.duration.round)
       )
+    end
+
+    # Time measure since system boot with
+    # Process.clock_gettime(Process::CLOCK_MONOTONIC, :float_millisecond)
+    def started_at
+      Time.current - ((current_time - event.time) / 1_000)
+    end
+
+    def finished_at
+      Time.current - ((current_time - event.end) / 1_000)
+    end
+
+    def current_time
+      Process.clock_gettime(Process::CLOCK_MONOTONIC, :float_millisecond)
     end
   end
 
