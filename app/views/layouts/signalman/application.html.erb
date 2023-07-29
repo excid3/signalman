@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signalman</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <div class="flex gap-4">
+      <%= render "signalman/shared/nav" %>
+      <div>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
+

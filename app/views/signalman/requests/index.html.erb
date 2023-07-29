@@ -1,0 +1,9 @@
+<h1>Requests</h1>
+
+<% @events.each do |event| %>
+  <%= tag.div id: dom_id(event) do %>
+    <%= link_to request_path(event) do %>
+      <%= event.name %>
+    <% end %>
+  <% end %>
+<% end %>
