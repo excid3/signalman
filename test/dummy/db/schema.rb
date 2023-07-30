@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_29_122215) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_020301) do
   create_table "signalman_events", force: :cascade do |t|
     t.string "name"
     t.datetime "started_at"
     t.datetime "finished_at"
+    t.float "duration"
     t.json "payload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

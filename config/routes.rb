@@ -3,9 +3,14 @@ Signalman::Engine.routes.draw do
   resources :jobs
   resources :cache
   resources :exceptions
-  resources :mail
+  resources :mails
   resources :queries
   resources :views
+
+  namespace :generators do
+    resource :scaffold
+    resource :model
+  end
 
   root "requests#index"
 end

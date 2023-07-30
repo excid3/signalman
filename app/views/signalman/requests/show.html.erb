@@ -1,2 +1,19 @@
-<h1>Request</h1>
-<%= @event.inspect %>
+<h1 class="mb-2"><%= @event.payload["method"] %> <%= @event.payload["path"] %> as <%= @event.payload["format"].upcase %></h1>
+<div class="text-xs">Started at <%= @event.started_at %></div>
+
+<h4>Processed by</h4>
+<pre><%= @event.payload["controller"] %>#<%= @event.payload["action"] %></pre>
+<p class="text-sm">Completed in <%= @event.duration.round %>ms (Views: <%= @event.payload["view_runtime"].round %>ms | ActiveRecord: <%= @event.payload["db_runtime"].round %>ms)</p>
+
+<h4>Response</h4>
+<pre><%= @event.payload["status"] %> <%= Rack::Utils::HTTP_STATUS_CODES[@event.payload["status"]] %></pre>
+
+<h4>Params</h4>
+<pre><%= @event.payload["params"] %></pre>
+
+<h4>Headers</h4>
+<pre>
+<% @event.payload["headers"].sort.each do |key, value| %>
+<%= key %>: <%= value %>
+<% end %>
+</pre>

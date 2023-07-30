@@ -1,0 +1,17 @@
+<h1 class="mb-2"><%= @event.payload["class"] %></h1>
+<div class="text-xs">Started at <%= @event.started_at %></div>
+
+<h4>ID</h4>
+<pre><%= @event.payload["id"] %></pre>
+
+<h4>Queue Name</h4>
+<pre><%= @event.payload["queue_name"] %></pre>
+
+<h4>Enqueued At</h4>
+<pre><%= @event.payload["enqueued_at"] %></pre>
+
+<h4>Scheduled At</h4>
+<pre><%= @event.payload["scheduled_at"] || "nil" %></pre>
+
+<h4>Arguments</h4>
+<pre><%= @event.payload["args"] %></pre>

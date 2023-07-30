@@ -1,2 +1,20 @@
-<h1>View</h1>
-<%= @event.inspect %>
+<h1 class="mb-2"><%= @event.name.split(".").first.humanize %></h1>
+<div class="text-xs">Started at <%= @event.started_at %></div>
+
+<h4>Identifier</h4>
+<pre><%= @event.payload["identifier"] %></pre>
+
+<% if @event.payload.has_key?("layout") %>
+  <h4>Layout</h4>
+  <pre><%= @event.payload["layout"] %></pre>
+<% end %>
+
+<% if @event.payload.has_key?("count") %>
+  <h4>Count</h4>
+  <pre><%= @event.payload["count"] %></pre>
+<% end %>
+
+<% if @event.payload.has_key?("cache_hits") %>
+  <h4>Cache Hits</h4>
+  <pre><%= @event.payload["cache_hits"] %></pre>
+<% end %>

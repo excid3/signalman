@@ -1,19 +1,31 @@
 <h1>Requests</h1>
 
 <div class="table w-full">
+  <div class="table-header-group">
+    <div class="table-row font-bold">
+      <div class="table-cell border-b border-neutral-100 p-2">Method</div>
+      <div class="table-cell border-b border-neutral-100 p-2">Path</div>
+      <div class="table-cell border-b border-neutral-100 p-2">Status</div>
+      <div class="table-cell border-b border-neutral-100 p-2">Duration</div>
+      <div class="table-cell border-b border-neutral-100 p-2">Happened</div>
+    </div>
+  </div>
   <div class="table-row-group">
-  <% @events.each do |event| %>
-    <%= link_to request_path(event), class: "table-row", id: dom_id(event) do %>
-      <%= tag.div event.payload["method"], class: "table-cell" %>
-      <%= tag.div event.payload["path"], class: "table-cell" %>
-      <%= tag.div event.payload["status"], class: "table-cell" %>
-      <%= tag.div class: "table-cell" do %>
-        <%= event.payload["duration"] %>
-      <% end %>
-      <%= tag.div class: "table-cell" do %>
-        <%= time_ago_in_words event.started_at %>
+    <% @events.each do |event| %>
+      <%= link_to signalman_path_for(event), class: "table-row", id: dom_id(event) do %>
+        <%= tag.div event.payload["method"], class: "table-cell border-b border-neutral-100 p-2" %>
+        <%= tag.div event.payload["path"], class: "table-cell border-b border-neutral-100 p-2" %>
+        <%= tag.div class: "table-cell border-b border-neutral-100 p-2" do %>
+          <%= event.payload["status"] %>
+          <%= Rack::Utils::HTTP_STATUS_CODES[event.payload["status"]] %>
+        <% end %>
+        <%= tag.div class: "table-cell border-b border-neutral-100 p-2" do %>
+          <%= badge_for_request_duration(event.duration) %>
+        <% end %>
+        <%= tag.div class: "table-cell border-b border-neutral-100 p-2" do %>
+          <%= time_ago_in_words event.started_at %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
   </div>
 </div>

@@ -1,0 +1,9 @@
+<% if @status.success? %>
+  <p>Visit <%= link_to "/#{params[:model_name].underscore.pluralize}", "/#{params[:model_name].underscore.pluralize}", target: :_blank %></p>
+<% end %>
+
+<pre class="font-mono text-xs p-4 rounded bg-gray-100">
+$ rails generate scaffold <%= params[:model_name] %> <%= @fields.join(" ") %>
+<%= simple_format @stdout %>
+<%= simple_format @stderr %>
+</pre>

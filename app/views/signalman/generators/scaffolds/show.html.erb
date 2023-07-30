@@ -1,0 +1,36 @@
+<h1>Generate Scaffold</h1>
+
+<%= form_with url: generators_scaffold_path do |form| %>
+  <div>
+    <%= form.label :model_name, class: "block" %>
+    <%= form.text_field :model_name, placeholder: "User", required: true %>
+  </div>
+
+  <template id="field">
+    <div class="mt-4">
+      <%= form.text_field "fields[][name]", placeholder: "email", required: true %>
+      <%= form.select "fields[][type]", options_for_select(ActiveRecord::Base.connection.class::NATIVE_DATABASE_TYPES.keys.excluding(:primary_key)) %>
+      <%= button_tag "Remove", onclick: "event.preventDefault(); this.parentElement.remove()" %>
+    </div>
+  </template>
+
+  <label>Fields</label>
+  <div id="fields">
+  </div>
+  <%= button_tag "Add field", onclick: "addField(event)" %>
+
+  <div class="mt-4">
+    <%= form.button "Generate" %>
+  </div>
+<% end %>
+
+<script>
+  const template = document.querySelector("#field")
+  const fields = document.querySelector("#fields")
+
+  function addField(event) {
+    event.preventDefault()
+    const clone = template.content.cloneNode(true)
+    fields.appendChild(clone)
+  }
+</script>

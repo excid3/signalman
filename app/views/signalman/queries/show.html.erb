@@ -1,0 +1,17 @@
+<h1 class="mb-2"><%= @event.payload["name"] %></h1>
+<div class="text-xs">Started at <%= @event.started_at %></div>
+
+<h4>SQL</h4>
+<pre><%= @event.payload["sql"] %></pre>
+
+<h4>Binds</h4>
+<pre><%= @event.payload["binds"] %></pre>
+
+<h4>Type Casted Binds</h4>
+<pre><%= @event.payload["type_casted_binds"] %></pre>
+
+<h4>Statement Name</h4>
+<pre><%= @event.payload["statement_name"] %></pre>
+
+<h4>Async</h4>
+<pre><%= @event.payload["async"] %></pre>

@@ -1,0 +1,17 @@
+<h1 class="mb-2"><%= @event.payload["mailer"] %></h1>
+<div class="text-xs">Started at <%= @event.started_at %></div>
+
+<h4>Message ID</h4>
+<pre><%= @event.payload["message_id"] %></pre>
+
+<h4>Subject</h4>
+<pre><%= @event.payload["subject"] %></pre>
+
+<h4>To</h4>
+<pre><%= @event.payload["to"] %></pre>
+
+<h4>From </h4>
+<pre><%= @event.payload["from"] %></pre>
+
+<h4>Mail</h4>
+<pre><%= @event.payload["mail"] %></pre>

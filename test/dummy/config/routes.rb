@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   mount Signalman::Engine => "signalman"
 
   scope controller: :main do
-    get :deprecation
+    get :send_mail
+    get :enqueue_mail
   end
 
   root "main#index"

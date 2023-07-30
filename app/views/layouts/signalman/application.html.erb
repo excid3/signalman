@@ -6,13 +6,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
   </head>
 
   <body>
     <div class="flex gap-4">
       <%= render "signalman/shared/nav" %>
-      <div class="w-full">
+      <div class="ml-72 w-full p-4 sm:p-8 prose max-w-none prose-a:no-underline">
+        <%= render "signalman/shared/flash" %>
         <%= yield %>
       </div>
     </div>

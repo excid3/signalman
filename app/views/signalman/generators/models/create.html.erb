@@ -1,0 +1,5 @@
+<pre class="font-mono text-xs p-4 rounded bg-gray-100">
+$ rails generate model <%= params[:model_name] %> <%= @fields.join(" ") %>
+<%= simple_format @stdout %>
+<%= simple_format @stderr %>
+</pre>

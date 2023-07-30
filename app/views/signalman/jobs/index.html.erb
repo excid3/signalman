@@ -1,0 +1,28 @@
+<h1>Jobs</h1>
+
+<div class="table w-full">
+  <div class="table-header-group">
+    <div class="table-row font-bold">
+      <div class="table-cell border-b border-neutral-100 p-2">Job</div>
+      <div class="table-cell border-b border-neutral-100 p-2">Id</div>
+      <div class="table-cell border-b border-neutral-100 p-2">Arguments</div>
+      <div class="table-cell border-b border-neutral-100 p-2">Duration</div>
+      <div class="table-cell border-b border-neutral-100 p-2">Happened</div>
+    </div>
+  </div>
+  <div class="table-row-group">
+    <% @events.each do |event| %>
+      <%= link_to signalman_path_for(event), class: "table-row", id: dom_id(event) do %>
+        <%= tag.div event.payload["class"], class: "table-cell border-b border-neutral-100 p-2" %>
+        <%= tag.div event.payload["id"], class: "table-cell border-b border-neutral-100 p-2" %>
+        <%= tag.div event.payload["args"], class: "table-cell border-b border-neutral-100 p-2" %>
+        <%= tag.div class: "table-cell border-b border-neutral-100 p-2" do %>
+          <%= event.duration.round %>ms
+        <% end %>
+        <%= tag.div class: "table-cell border-b border-neutral-100 p-2" do %>
+          <%= time_ago_in_words event.started_at %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
