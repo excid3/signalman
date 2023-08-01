@@ -91,16 +91,15 @@ module Signalman
     def skip?
       ["SCHEMA", "TRANSACTION"].include?(event.payload[:name]) ||
         event.payload[:name]&.include?("Signalman::") ||
-        || !self.class.events_table?
-        
-        def self.events_table?
-            return @events_table if defined?(@events_table)
-          @events_table = ActiveRecord::Base.connection.table_exists?(:signalman_events)
-        end
+        !self.class.events_table?
     end
 
     def process
       create_event event.payload.except(:connection)
+    end
+
+    def self.events_table?
+      ActiveRecord::Base.connection.table_exists?(:signalman_events)
     end
   end
 
