@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    signalman (0.0.1)
+    signalman (0.1.0)
       rails (>= 7.0.0)
 
 GEM
