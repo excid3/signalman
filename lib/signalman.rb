@@ -36,6 +36,8 @@ module Signalman
         duration: event.duration,
         payload: payload
       )
+    rescue ActiveRecord::StatementInvalid => e
+      Rails.logger.error "[Signalman] #{e.message}"
     end
 
     # Time measure since system boot with
