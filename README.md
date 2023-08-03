@@ -8,17 +8,17 @@ How to use my plugin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "signalman"
+bundle add "signalman", group: :development
 ```
 
-And then execute:
-```bash
-$ bundle
+Add migrations
+```ruby
+bin/rails signalman:install:migrations
 ```
 
-Or install it yourself as:
-```bash
-$ gem install signalman
+Mount to the Rails routes
+```ruby
+mount Signalman::Engine => "/signalman" if Rails.env.development?
 ```
 
 ## Contributing
