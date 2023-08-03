@@ -1,5 +1,5 @@
 # Signalman
-Short description and motivation.
+A debug tool for Ruby on Rails application.
 
 ## Usage
 How to use my plugin.
