@@ -1,5 +1,9 @@
 ### Unreleased
 
+### 0.1.2
+
+* Skip SQL events like CREATE_TABLE and ActiveRecord::InternalMetadata
+
 ### 0.1.1
 
 * Skip SchemaMigration SQL events
