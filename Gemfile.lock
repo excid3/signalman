@@ -108,9 +108,13 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.15.3-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.15.3-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     puma (6.3.0)
       nio4r (~> 2.0)
@@ -158,8 +162,10 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (1.6.3-aarch64-linux)
     sqlite3 (1.6.3-arm64-darwin)
     sqlite3 (1.6.3-x86_64-darwin)
+    sqlite3 (1.6.3-x86_64-linux)
     thor (1.2.2)
     timeout (0.4.0)
     turbo-rails (1.4.0)
@@ -179,8 +185,10 @@ GEM
     zeitwerk (2.6.9)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-22
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   importmap-rails
