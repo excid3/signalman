@@ -91,16 +91,17 @@ module Signalman
 
   class QueryHandler < BaseHandler
     IGNORED_QUERIES = [
-      nil, # CREATE_TABLE queries have nil for `name`
       "SCHEMA",
       "TRANSACTION",
       "ActiveRecord::SchemaMigration",
       "ActiveRecord::InternalMetadata",
-      "Signalman::"
+      /^Signalman/
     ]
 
+    # CREATE_TABLE queries have nil for `name`
     def skip?
-      IGNORED_QUERIES.include?(event.payload[:name])
+      return if event.payload[:name].blank?
+      IGNORED_QUERIES.any?{ |q| q.match? event.payload[:name] }
     end
 
     def process
