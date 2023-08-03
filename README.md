@@ -8,7 +8,7 @@ How to use my plugin.
 Add this line to your application's Gemfile:
 
 ```ruby
-bundle add "signalman", group: :development
+bundle add "signalman" --group "development"
 ```
 
 Add migrations
