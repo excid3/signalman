@@ -89,8 +89,7 @@ module Signalman
 
   class QueryHandler < BaseHandler
     def skip?
-      ["SCHEMA", "TRANSACTION"].include?(event.payload[:name]) ||
-        event.payload[:name]&.include?("Signalman::")
+      ["SCHEMA", "TRANSACTION", "ActiveRecord::SchemaMigration", "Signalman::"].include?(event.payload[:name])
     end
 
     def process
