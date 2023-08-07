@@ -66,16 +66,16 @@ module Signalman
       end
 
       create_event event.payload.slice(
-          :method,
-          :path,
-          :controller,
-          :action,
-          :params,
-          :format,
-          :status,
-          :db_runtime,
-          :view_runtime
-        ).merge(headers: headers)
+        :method,
+        :path,
+        :controller,
+        :action,
+        :params,
+        :format,
+        :status,
+        :db_runtime,
+        :view_runtime
+      ).merge(headers: headers)
     end
 
     def skip?
@@ -101,7 +101,7 @@ module Signalman
     # CREATE_TABLE queries have nil for `name`
     def skip?
       return if event.payload[:name].blank?
-      IGNORED_QUERIES.any?{ |q| q.match? event.payload[:name] }
+      IGNORED_QUERIES.any? { |q| q.match? event.payload[:name] }
     end
 
     def process
@@ -147,7 +147,11 @@ module Signalman
       when Array
         arg.map { |value| format(value) }
       when GlobalID::Identification
-        arg.to_global_id rescue arg
+        begin
+          arg.to_global_id
+        rescue
+          arg
+        end
       else
         arg
       end

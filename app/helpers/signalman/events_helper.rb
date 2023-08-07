@@ -1,7 +1,7 @@
 module Signalman
   module EventsHelper
     def signalman_path_for(event)
-      block = Signalman.events.find{ |key, _| key.match? event.name }.last[:path]
+      block = Signalman.events.find { |key, _| key.match? event.name }.last[:path]
       instance_exec event, &block
     end
 
