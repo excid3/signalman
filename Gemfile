@@ -10,6 +10,8 @@ gem "sprockets-rails"
 gem "turbo-rails"
 gem "importmap-rails"
 gem "redis"
+gem "capybara"
+gem "selenium-webdriver"
 gem "web-console", group: :development
 
 # Start debugger with binding.b [https://github.com/ruby/debug]

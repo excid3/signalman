@@ -1,4 +1,4 @@
-<h1>Mail</h1>
+<h1>Mails</h1>
 
 <div class="table w-full">
   <div class="table-header-group">
@@ -12,7 +12,7 @@
   </div>
   <div class="table-row-group">
     <% @events.each do |event| %>
-      <%= link_to signalman_path_for(event), class: "table-row", id: dom_id(event) do %>
+      <%= link_to signalman_path_for(event), class: "table-row hover:bg-slate-100", id: dom_id(event) do %>
         <%= tag.div event.payload["mailer"], class: "table-cell border-b border-neutral-100 p-2" %>
         <%= tag.div event.payload["subject"], class: "table-cell border-b border-neutral-100 p-2" %>
         <%= tag.div event.payload["to"], class: "table-cell border-b border-neutral-100 p-2" %>
