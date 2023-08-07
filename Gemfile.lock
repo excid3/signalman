@@ -90,6 +90,9 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
+    debug (1.8.0)
+      irb (>= 1.5.0)
+      reline (>= 0.3.1)
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -98,6 +101,9 @@ GEM
     importmap-rails (1.2.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
+    io-console (0.6.0)
+    irb (1.7.4)
+      reline (>= 0.3.6)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
     lint_roller (1.1.0)
@@ -178,6 +184,8 @@ GEM
     redis-client (0.15.0)
       connection_pool
     regexp_parser (2.8.1)
+    reline (0.3.7)
+      io-console (~> 0.5)
     rexml (3.2.6)
     rubocop (1.52.1)
       json (~> 2.3)
@@ -255,6 +263,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  debug (>= 1.0.0)
   importmap-rails
   puma
   redis
