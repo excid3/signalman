@@ -1,0 +1,37 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - master
+jobs:
+  sqlite:
+    runs-on: ubuntu-latest
+
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
+      BUNDLE_PATH_RELATIVE_TO_CWD: true
+
+    steps:
+      - name: SQLite3 version
+        run: sqlite3 --version
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version:3.2
+          bundler: default
+          bundler-cache: true
+          rubygems: latest
+      - name: StandardRb check
+        run: bundle exec standardrb
+      - name: Run tests
+        env:
+          DATABASE_URL: "sqlite3:pay_test"
+          STRIPE_PRIVATE_KEY: ${{ secrets.STRIPE_PRIVATE_KEY }}
+        run: |
+          bin/rails db:test:prepare
+          bin/rails test:all
