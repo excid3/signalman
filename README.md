@@ -1,6 +1,8 @@
 # Signalman
 A debug tool for Ruby on Rails application.
 
+[![Tests](https://github.com/excid3/signalman/actions/workflows/ci.yml/badge.svg)](https://github.com/excid3/signalman/actions/workflows/ci.yml)
+
 ## Usage
 How to use my plugin.
 
