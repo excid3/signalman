@@ -1,4 +1,6 @@
 class Signalman::Event < ApplicationRecord
+  validates :name, presence: true
+
   scope :requests, -> { where(name: "process_action.action_controller") }
   scope :mails, -> { where(name: "deliver.action_mailer") }
   scope :queries, -> { where(name: "sql.active_record") }

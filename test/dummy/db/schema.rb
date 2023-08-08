@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_07_30_020301) do
   create_table "signalman_events", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "started_at"
     t.datetime "finished_at"
     t.float "duration"
