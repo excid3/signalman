@@ -1,5 +1,7 @@
 ### Unreleased
 
+* Fix load helpers on time #12
+
 ### 0.1.2
 
 * Skip SQL events like CREATE_TABLE and ActiveRecord::InternalMetadata

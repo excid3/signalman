@@ -8,7 +8,7 @@ module Signalman
 
     # helpers must be accessible anywhere for Turbo broadcasts
     initializer "signalman.helpers" do
-      ActiveSupport.on_load :action_controller do
+      ActiveSupport.to_prepare :action_controller do
         helper Signalman::EventsHelper
       end
     end
